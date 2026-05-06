@@ -1,0 +1,116 @@
+/* ====== RESET BÁSICO ====== */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { font-family: Georgia, "Times New Roman", serif; color: #111; background: #fff; }
+
+/* ====== HEADER (franja roja + contenido) ====== */
+.main-header{
+  background: #b8322b;              /* rojo similar al de la captura */
+  color: #fff;
+  padding: 16px 22px 10px;
+}
+
+/* logo + título + login en la misma línea */
+.logo-titulo{
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* imagen logo */
+.logo-titulo img{
+  width: 84px;                      /* en la captura se ve más pequeño que 140 */
+  height: auto;
+  border-radius: 14px;
+  background: #0b1a2b;              /* “placa” oscura detrás */
+  padding: 10px;
+}
+
+/* título grande */
+.logo-titulo h1{
+  margin: 0;
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: .2px;
+}
+
+/* formulario login alineado cerca del título */
+.login-form{
+  margin-left: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* inputs del login pequeños */
+.login-form input{
+  height: 22px;
+  width: 180px;
+  padding: 2px 6px;
+  border: 1px solid rgba(255,255,255,.65);
+  border-radius: 2px;
+  outline: none;
+}
+
+/* botones del login + sign in */
+.login-form button,
+.logo-titulo > a > button{
+  height: 34px;
+  padding: 0 18px;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,.85);
+  background: #b8322b;
+  color: #fff;
+  cursor: pointer;
+}
+
+.logo-titulo > a{
+  margin-left: 10px;
+  text-decoration: none;
+}
+
+/* ====== MENÚ (debajo, en la misma franja roja) ====== */
+.menu{
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: flex;
+  gap: 34px;
+  flex-wrap: wrap;
+}
+
+.menu a{
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.menu a:hover{
+  text-decoration: underline;
+}
+
+/* ====== FOOTER (franja roja inferior) ====== */
+.main-footer{
+  background: #b8322b;
+  color: #fff;
+  padding: 22px;
+  margin-top: 24px;
+}
+
+.footer-menu{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 40px;
+}
+
+.footer-menu a{
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.footer-menu a:hover{
+  text-decoration: underline;
+}
