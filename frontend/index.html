@@ -1,55 +1,161 @@
-<!doctype html>
-  <html lang="es">
-    <head>
-      <meta charset="utf-8">
-      <title>Viajes y Más, índice</title>
-      <link href="css/index_page.css" rel = "stylesheet" type = "text/css"/>
-    </head>
-    <header class="main-header">
-      <div class="logo-titulo">
-        <img src="Images/findhomelogo.png" width="140" height="80" alt="logo">
-        <h1>Viajes y Más</h1>
-        <form class="login-form">
-          <input type="text" name="user" placeholder="User" required>
-          <input type="password" name="password" placeholder="Password" required>
-          <button type="submit">Login</button>
-        </form>
-        <a href="html/altausuarios.html"><button>sign in</button></a>
-      </div>
-      <nav>
-        <ul class="menu">
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="html/viajes.html">Viajes</a></li>
-          <li><a href="html/viajes_grupo.html">Viajes en grupo</a></li>
-          <li><a href="html/ofertas.html">Ofertas</a></li>
-          <li><a href="html/sobre_agencia.html">Sobre nuestra agencia</a></li>
-          <li><a href="html/sugerencias.html">Sugerencias</a></li>
-        </ul>
-      </nav>
-    </header>
-  <body>
-    <main class="index_s1">
-      <img src="imagenes/Miravet.jpg" width="600" height="400" alt="viajes_imagen">
-      <article class="index_s1_text">
-        <h2>Explora el mundo con nosotros</h2>
-        <p>En Viajes y Más, te invitamos a descubrir destinos increíbles y experiencias inolvidables. 
-          Desde las playas de ensueño hasta las ciudades vibrantes, tenemos el viaje perfecto para cada tipo de viajero. 
-          Nuestro equipo de expertos está dedicado a brindarte un servicio excepcional y a ayudarte a crear recuerdos que durarán toda la vida. 
-          ¡Explora nuestras ofertas y comienza tu próxima aventura con nosotros!</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FindHome - Encuentra tu país ideal</title>
+    <link rel="stylesheet" href="./css/index_page.css" type = "text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
 
-          <h3>Buscar Viajes</h3>
-          <form class="index_buscador-viajes">
-            <input type="text" name="destino" placeholder="Destino">
-            <input type="date" name="fecha">
-            <button type="submit">Buscar viajes</button>
-          </form>
-      </article>
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-area">
+                <i class="fa-solid fa-house-chimney logo-icon"></i>
+                <span class="logo-title">FindHome</span>
+            </div>
+            <nav class="auth-nav">
+                <a href="#" class="btn-login">Iniciar Sesión</a>
+                <a href="#" class="btn-register">Registrarse</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        
+        <section class="filters-section">
+            <h2>¿Qué buscas en tu próximo destino?</h2>
+            <p class="subtitle">Responde a estas preguntas para ajustar el ranking a tus preferencias.</p>
+            
+            <form class="questions-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="habitantes">Número de habitantes:</label>
+                        <select id="habitantes" name="habitantes">
+                            <option value="">Cualquier tamaño</option>
+                            <option value="poca">Menos de 5M (Pequeño)</option>
+                            <option value="media">Entre 5M y 40M (Medio)</option>
+                            <option value="mucha">Más de 40M (Grande)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="coste-vida">Coste de vida medio:</label>
+                        <select id="coste-vida" name="coste-vida">
+                            <option value="">Cualquier presupuesto</option>
+                            <option value="bajo">Económico</option>
+                            <option value="medio">Moderado</option>
+                            <option value="alto">Alto</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="transporte">Calidad del transporte (Reseñas):</label>
+                        <select id="transporte" name="transporte">
+                            <option value="">No importa</option>
+                            <option value="4">⭐⭐⭐⭐+ (Excelente)</option>
+                            <option value="3">⭐⭐⭐+ (Bueno)</option>
+                            <option value="2">⭐⭐+ (Aceptable)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="calidad-vida">Calidad de vida (Reseñas):</label>
+                        <select id="calidad-vida" name="calidad-vida">
+                            <option value="">No importa</option>
+                            <option value="4">⭐⭐⭐⭐+ (Excelente)</option>
+                            <option value="3">⭐⭐⭐+ (Buena)</option>
+                            <option value="2">⭐⭐+ (Regular)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ingresos">Tasa media de ingresos:</label>
+                        <select id="ingresos" name="ingresos">
+                            <option value="">Cualquier nivel</option>
+                            <option value="alto">Ingresos Altos</option>
+                            <option value="medio">Ingresos Medios</option>
+                            <option value="bajo">Ingresos Bajos</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="empleo">Tasa de empleo media:</label>
+                        <select id="empleo" name="empleo">
+                            <option value="">Cualquiera</option>
+                            <option value="alta">Alta estabilidad (>95%)</option>
+                            <option value="media">Estabilidad media (90% - 95%)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-search">Actualizar Ranking</button>
+            </form>
+        </section>
+
+        <section class="results-section">
+            <h2>Ranking de Países Recomendados</h2>
+            <div class="table-container">
+                <table class="ranking-table">
+                    <thead>
+                        <tr>
+                            <th>Posición</th>
+                            <th>País</th>
+                            <th>Habitantes</th>
+                            <th>Coste de Vida</th>
+                            <th>Transporte</th>
+                            <th>Calidad de Vida</th>
+                            <th>Ingresos Medios</th>
+                            <th>Tasa Empleo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="pos-cell">1</td>
+                            <td class="country-cell">🇨🇭 Suiza</td>
+                            <td>8.7 Millones</td>
+                            <td><span class="badge badge-danger">Alto</span></td>
+                            <td>⭐⭐⭐⭐⭐</td>
+                            <td>⭐⭐⭐⭐⭐</td>
+                            <td>7,500 €/mes</td>
+                            <td>95.7%</td>
+                        </tr>
+                        <tr>
+                            <td class="pos-cell">2</td>
+                            <td class="country-cell">🇩🇪 Alemania</td>
+                            <td>83.2 Millones</td>
+                            <td><span class="badge badge-warning">Medio</span></td>
+                            <td>⭐⭐⭐⭐★</td>
+                            <td>⭐⭐⭐⭐★</td>
+                            <td>4,100 €/mes</td>
+                            <td>94.3%</td>
+                        </tr>
+                        <tr>
+                            <td class="pos-cell">3</td>
+                            <td class="country-cell">🇪🇸 España</td>
+                            <td>47.4 Millones</td>
+                            <td><span class="badge badge-success">Bajo</span></td>
+                            <td>⭐⭐⭐⭐★</td>
+                            <td>⭐⭐⭐⭐⭐</td>
+                            <td>2,300 €/mes</td>
+                            <td>88.2%</td>
+                        </tr>
+                        <tr>
+                            <td class="pos-cell">4</td>
+                            <td class="country-cell">🇯🇵 Japón</td>
+                            <td>125.7 Millones</td>
+                            <td><span class="badge badge-warning">Medio</span></td>
+                            <td>⭐⭐⭐⭐⭐</td>
+                            <td>⭐⭐⭐⭐★</td>
+                            <td>3,500 €/mes</td>
+                            <td>97.4%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
     </main>
-  </body>
-  <footer class="main-footer">
-    <ul class="footer-menu">
-      <li><a href="html/contacto.html">Contáctanos</a></li>
-      <li><a href="como_se_hizo.pdf">Cómo se hizo</a></li>
-    </ul>
-  </footer>
+
+</body>
 </html>
