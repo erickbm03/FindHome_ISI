@@ -12,6 +12,10 @@ public class Pais {
   private Integer id;
 
   private String nombre;
+
+  @Column(name= "iso3",nullable=false, unique=true, length=3)
+  private String iso3;
+
   private String bandera;
   private String habitantes;
 
@@ -33,6 +37,7 @@ public class Pais {
   // getters:
   public Integer getId() { return id; }
   public String getNombre() { return nombre; }
+  public String getIso3() { return iso3; }
   public String getBandera() { return bandera; }
   public String getHabitantes() { return habitantes; }
   public String getCosteVida() { return costeVida; }
@@ -40,6 +45,17 @@ public class Pais {
   public Integer getCalidadVidaEstrellas() { return calidadVidaEstrellas; }
   public String getIngresosMedios() { return ingresosMedios; }
   public BigDecimal getTasaEmpleo() { return tasaEmpleo; }
+
+  //setters:
+  public void setNombre(String nombre){ this.nombre= nombre; }
+  public void setIso3(String iso3){ this.iso3= iso3; }
+  public void setBandera(String bandera){ this.bandera= bandera; }
+  public void setHabitantes(String habitantes){ this.habitantes= habitantes; }
+  public void setCosteVida(String costeVida){ this.costeVida= costeVida; }
+  public void setTransporteEstrellas(Integer transporteEstrellas){ this.transporteEstrellas= transporteEstrellas; }
+  public void setCalidadVidaEstrellas(Integer calidadVidaEstrellas){ this.calidadVidaEstrellas= calidadVidaEstrellas; }
+  public void setIngresosMedios(String ingresosMedios){ this.ingresosMedios= ingresosMedios; }
+  public void setTasaEmpleo(BigDecimal tasaEmpleo){ this.tasaEmpleo= tasaEmpleo; }
 
 
 }

@@ -111,26 +111,45 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="pais, iter : ${paises}">
-                          <td th:text="${iter.index + 1}">1</td>
-                      
-                          <td>
-                            <span th:text="${pais.bandera}">🇨🇭</span>
-                            <strong th:text="${pais.nombre}">Suiza</strong>
-                          </td>
-                      
-                          <td th:text="${pais.habitantes}">8.7 Millones</td>
-                          <td th:text="${pais.costeVida}">Alto</td>
-                      
-                          <td>
-                            <span th:each="i : ${#numbers.sequence(1, pais.transporteEstrellas)}">⭐</span>
-                          </td>
-                          <td>
-                            <span th:each="i : ${#numbers.sequence(1, pais.calidadVidaEstrellas)}">⭐</span>
-                          </td>
-                      
-                          <td th:text="${pais.ingresosMedios}">7,500 €/mes</td>
-                          <td th:text="${pais.tasaEmpleo}">95.7</td>
+                        <tr th:each="pais, iter : ${paises}" th:if="${paises != null}">
+
+                            <td th:text="${iter.index + 1}">1</td>
+                            
+                            <td class="country-cell">
+                                <span th:text="${pais?.bandera != null ? pais.bandera : ''}">🇨🇭</span>
+                                <span th:text="${pais?.nombre != null ? pais.nombre : 'Desconocido'}">Suiza</span>
+                            </td>
+                            
+                            <td th:text="${pais?.habitantes != null ? pais.habitantes : ''}">8.7 Millones</td>
+                            
+                            <td>
+                                <span th:if="${pais?.costeVida != null}"
+                                      th:text="${pais.costeVida}"
+                                      th:classappend="${#strings.toLowerCase(pais.costeVida) == 'alto' ? 'badge badge-danger' : 
+                                                       (#strings.toLowerCase(pais.costeVida) == 'medio' ? 'badge badge-warning' : 'badge badge-success')}">
+                                    Alto
+                                </span>
+                            </td>
+                            
+                            <td>
+                                <span th:if="${pais?.transporteEstrellas != null}" 
+                                      th:text="${#strings.repeat('⭐', pais.transporteEstrellas)}">⭐⭐⭐⭐⭐</span>
+                            </td>
+                            
+                            <td>
+                                <span th:if="${pais?.calidadVidaEstrellas != null}" 
+                                      th:text="${#strings.repeat('⭐', pais.calidadVidaEstrellas)}">⭐⭐⭐⭐⭐</span>
+                            </td>
+                            
+                            <td th:text="${pais?.ingresosMedios != null ? pais.ingresosMedios : ''}">7,500 €/mes</td>
+                            
+                            <td th:text="${pais?.tasaEmpleo != null ? #numbers.formatDecimal(pais.tasaEmpleo, 1, 1) + '%' : ''}">95.7%</td>
+                        </tr>
+                    
+                        <tr th:if="${paises == null || #lists.isEmpty(paises)}">
+                            <td colspan="8" style="text-align: center; color: var(--text-light); padding: 2rem;">
+                                No se encontraron países que coincidan con tu búsqueda.
+                            </td>
                         </tr>
                     </tbody>
                 </table>
