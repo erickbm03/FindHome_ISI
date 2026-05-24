@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FindHome - Encuentra tu país ideal</title>
-    <link rel="stylesheet" href="./css/index_page.css" type = "text/css">
+    <link rel="stylesheet" th:href="@{/css/index_page.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -107,49 +107,30 @@
                             <th>Transporte</th>
                             <th>Calidad de Vida</th>
                             <th>Ingresos Medios</th>
-                            <th>Tasa Empleo</th>
+                            <th>Tasa Empleo (%)</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="pos-cell">1</td>
-                            <td class="country-cell">🇨🇭 Suiza</td>
-                            <td>8.7 Millones</td>
-                            <td><span class="badge badge-danger">Alto</span></td>
-                            <td>⭐⭐⭐⭐⭐</td>
-                            <td>⭐⭐⭐⭐⭐</td>
-                            <td>7,500 €/mes</td>
-                            <td>95.7%</td>
-                        </tr>
-                        <tr>
-                            <td class="pos-cell">2</td>
-                            <td class="country-cell">🇩🇪 Alemania</td>
-                            <td>83.2 Millones</td>
-                            <td><span class="badge badge-warning">Medio</span></td>
-                            <td>⭐⭐⭐⭐★</td>
-                            <td>⭐⭐⭐⭐★</td>
-                            <td>4,100 €/mes</td>
-                            <td>94.3%</td>
-                        </tr>
-                        <tr>
-                            <td class="pos-cell">3</td>
-                            <td class="country-cell">🇪🇸 España</td>
-                            <td>47.4 Millones</td>
-                            <td><span class="badge badge-success">Bajo</span></td>
-                            <td>⭐⭐⭐⭐★</td>
-                            <td>⭐⭐⭐⭐⭐</td>
-                            <td>2,300 €/mes</td>
-                            <td>88.2%</td>
-                        </tr>
-                        <tr>
-                            <td class="pos-cell">4</td>
-                            <td class="country-cell">🇯🇵 Japón</td>
-                            <td>125.7 Millones</td>
-                            <td><span class="badge badge-warning">Medio</span></td>
-                            <td>⭐⭐⭐⭐⭐</td>
-                            <td>⭐⭐⭐⭐★</td>
-                            <td>3,500 €/mes</td>
-                            <td>97.4%</td>
+                        <tr th:each="pais, iter : ${paises}">
+                          <td th:text="${iter.index + 1}">1</td>
+                      
+                          <td>
+                            <span th:text="${pais.bandera}">🇨🇭</span>
+                            <strong th:text="${pais.nombre}">Suiza</strong>
+                          </td>
+                      
+                          <td th:text="${pais.habitantes}">8.7 Millones</td>
+                          <td th:text="${pais.costeVida}">Alto</td>
+                      
+                          <td>
+                            <span th:each="i : ${#numbers.sequence(1, pais.transporteEstrellas)}">⭐</span>
+                          </td>
+                          <td>
+                            <span th:each="i : ${#numbers.sequence(1, pais.calidadVidaEstrellas)}">⭐</span>
+                          </td>
+                      
+                          <td th:text="${pais.ingresosMedios}">7,500 €/mes</td>
+                          <td th:text="${pais.tasaEmpleo}">95.7</td>
                         </tr>
                     </tbody>
                 </table>
