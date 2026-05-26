@@ -20,4 +20,16 @@ public class AdminController {
     int count = paisSyncService.syncFromRestCountries();
     return ResponseEntity.ok("OK. Upserted countries: " + count);
   }
+
+  @PostMapping("/admin/sync/worldbank")
+  public ResponseEntity<String> syncWorldBank() {
+    int count = paisSyncService.syncFromWorldBank();
+    return ResponseEntity.ok("OK. Upserted countries: " + count);
+  }
+
+  @PostMapping("/admin/sync/numbeo")
+  public ResponseEntity<String> syncNumbeo() {
+    int count = paisSyncService.syncFromNumbeoScraper();
+    return ResponseEntity.ok("OK. Upserted countries: " + count);
+  }
 }

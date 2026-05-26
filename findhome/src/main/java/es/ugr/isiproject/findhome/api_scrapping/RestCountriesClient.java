@@ -19,8 +19,8 @@ public class RestCountriesClient {
 
   public List<CountryData> fetchAllCountries() {
     // Pedimos solo campos necesarios para reducir payload
-    String url = "https://restcountries.com/v3.1/all?fields=name,cca3,population";
-
+    String url = "https://restcountries.com/v3.1/all?fields=name,cca2,cca3,population";
+    
     @SuppressWarnings("unchecked")
     List<Map<String, Object>> response = restTemplate.getForObject(url, List.class);
 
@@ -29,6 +29,7 @@ public class RestCountriesClient {
 
     for (Map<String, Object> item : response) {
       String iso3 = (String) item.get("cca3");
+      String iso2 = (String) item.get("cca2");
 
       // name es un objeto: { common: "...", official: "..." }
       String nombre = null;
@@ -42,13 +43,14 @@ public class RestCountriesClient {
       Object popObj = item.get("population");
       if (popObj instanceof Number n) poblacion = n.longValue();
 
-      if (iso3 == null || iso3.isBlank()) continue; // clave imprescindible
+      if (iso3 == null || iso3.isBlank()) continue; // claves imprescindibles
+      if (iso2 == null || iso2.isBlank()) continue; 
 
-      out.add(new CountryData(iso3, nombre, poblacion));
+      out.add(new CountryData(iso2, iso3, nombre, poblacion));
     }
 
     return out;
   }
 
-  public record CountryData(String iso3, String nombre, Long poblacion) {}
+  public record CountryData(String iso2, String iso3, String nombre, Long poblacion) {}
 }
