@@ -20,4 +20,11 @@ public class HomeController {
     model.addAttribute("paises", paisRepository.findAll());
     return "index"; // renderiza templates/index.html
   }
+
+  @PostMapping("/ranking")
+  public String ranking(@ModelAttribute BusquedaCriterios criterios, Model model) {
+      List<PaisPuntuado> ranking = rankingService.calcularRanking(criterios);
+      model.addAttribute("ranking", ranking);
+      return "resultadoRanking"; // nombre de la vista
+  }
 }
