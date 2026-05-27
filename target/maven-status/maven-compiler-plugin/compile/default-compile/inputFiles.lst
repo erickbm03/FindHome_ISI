@@ -1,0 +1,9 @@
+/home/adrian/Escritorio/Uni/ISI/FindHome_ISI/src/main/java/es/ugr/isiproject/findhome/FindhomeApplication.java
+/home/adrian/Escritorio/Uni/ISI/FindHome_ISI/src/main/java/es/ugr/isiproject/findhome/Service/PaisSyncService.java
+/home/adrian/Escritorio/Uni/ISI/FindHome_ISI/src/main/java/es/ugr/isiproject/findhome/api_scrapping/NumbeoScraper.java
+/home/adrian/Escritorio/Uni/ISI/FindHome_ISI/src/main/java/es/ugr/isiproject/findhome/api_scrapping/RestCountriesClient.java
+/home/adrian/Escritorio/Uni/ISI/FindHome_ISI/src/main/java/es/ugr/isiproject/findhome/api_scrapping/WorldBankClient.java
+/home/adrian/Escritorio/Uni/ISI/FindHome_ISI/src/main/java/es/ugr/isiproject/findhome/controller/AdminController.java
+/home/adrian/Escritorio/Uni/ISI/FindHome_ISI/src/main/java/es/ugr/isiproject/findhome/controller/HomeController.java
+/home/adrian/Escritorio/Uni/ISI/FindHome_ISI/src/main/java/es/ugr/isiproject/findhome/model/Pais.java
+/home/adrian/Escritorio/Uni/ISI/FindHome_ISI/src/main/java/es/ugr/isiproject/findhome/repository/PaisRepository.java

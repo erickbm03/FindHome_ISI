@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FindHome - Encuentra tu país ideal</title>
+    <link rel="stylesheet" th:href="@{/css/index_page.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-area">
+                <i class="fa-solid fa-house-chimney logo-icon"></i>
+                <span class="logo-title">FindHome</span>
+            </div>
+            <nav class="auth-nav">
+                <a href="#" class="btn-login">Iniciar Sesión</a>
+                <a href="#" class="btn-register">Registrarse</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        
+        <section class="filters-section">
+            <h2>¿Qué buscas en tu próximo destino?</h2>
+            <p class="subtitle">Responde a estas preguntas para ajustar el ranking a tus preferencias.</p>
+            
+            <form class="questions-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="habitantes">Número de habitantes:</label>
+                        <select id="habitantes" name="habitantes">
+                            <option value="">Cualquier tamaño</option>
+                            <option value="poca">Menos de 5M (Pequeño)</option>
+                            <option value="media">Entre 5M y 40M (Medio)</option>
+                            <option value="mucha">Más de 40M (Grande)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="coste-vida">Coste de vida medio:</label>
+                        <select id="coste-vida" name="coste-vida">
+                            <option value="">Cualquier presupuesto</option>
+                            <option value="bajo">Económico</option>
+                            <option value="medio">Moderado</option>
+                            <option value="alto">Alto</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="transporte">Calidad del transporte (Reseñas):</label>
+                        <select id="transporte" name="transporte">
+                            <option value="">No importa</option>
+                            <option value="4">⭐⭐⭐⭐+ (Excelente)</option>
+                            <option value="3">⭐⭐⭐+ (Bueno)</option>
+                            <option value="2">⭐⭐+ (Aceptable)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="calidad-vida">Calidad de vida (Reseñas):</label>
+                        <select id="calidad-vida" name="calidad-vida">
+                            <option value="">No importa</option>
+                            <option value="4">⭐⭐⭐⭐+ (Excelente)</option>
+                            <option value="3">⭐⭐⭐+ (Buena)</option>
+                            <option value="2">⭐⭐+ (Regular)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ingresos">Tasa media de ingresos:</label>
+                        <select id="ingresos" name="ingresos">
+                            <option value="">Cualquier nivel</option>
+                            <option value="alto">Ingresos Altos</option>
+                            <option value="medio">Ingresos Medios</option>
+                            <option value="bajo">Ingresos Bajos</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="empleo">Tasa de empleo media:</label>
+                        <select id="empleo" name="empleo">
+                            <option value="">Cualquiera</option>
+                            <option value="alta">Alta estabilidad (>95%)</option>
+                            <option value="media">Estabilidad media (90% - 95%)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-search">Actualizar Ranking</button>
+            </form>
+        </section>
+
+        <section class="results-section">
+            <h2>Ranking de Países Recomendados</h2>
+            <div class="table-container">
+                <table class="ranking-table">
+                    <thead>
+                        <tr>
+                            <th>Posición</th>
+                            <th>País</th>
+                            <th>Habitantes</th>
+                            <th>Coste de Vida</th>
+                            <th>Transporte</th>
+                            <th>Calidad de Vida</th>
+                            <th>Ingresos Medios</th>
+                            <th>Tasa Empleo (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="pais, iter : ${paises}" th:if="${paises != null}">
+
+                            <td th:text="${iter.index + 1}">1</td>
+                            
+                            <td class="country-cell">
+                                <span th:text="${pais?.bandera != null ? pais.bandera : ''}">🇨🇭</span>
+                                <span th:text="${pais?.nombre != null ? pais.nombre : 'Desconocido'}">Suiza</span>
+                            </td>
+                            
+                            <td th:text="${pais?.habitantes != null ? pais.habitantes : ''}">8.7 Millones</td>
+                            
+                            <td>
+                                <span th:if="${pais?.costeVida != null}"
+                                      th:text="${pais.costeVida}"
+                                      th:classappend="${#strings.toLowerCase(pais.costeVida) == 'alto' ? 'badge badge-danger' : 
+                                                       (#strings.toLowerCase(pais.costeVida) == 'medio' ? 'badge badge-warning' : 'badge badge-success')}">
+                                    Alto
+                                </span>
+                            </td>
+                            
+                            <td>
+                                <span th:if="${pais?.transporteEstrellas != null}" 
+                                      th:text="${#strings.repeat('⭐', pais.transporteEstrellas)}">⭐⭐⭐⭐⭐</span>
+                            </td>
+                            
+                            <td>
+                                <span th:if="${pais?.calidadVidaEstrellas != null}" 
+                                      th:text="${#strings.repeat('⭐', pais.calidadVidaEstrellas)}">⭐⭐⭐⭐⭐</span>
+                            </td>
+                            
+                            <td th:text="${pais?.ingresosMedios != null ? pais.ingresosMedios : ''}">7,500 €/mes</td>
+                            
+                            <td th:text="${pais?.tasaEmpleo != null ? #numbers.formatDecimal(pais.tasaEmpleo, 1, 1) + '%' : ''}">95.7%</td>
+                        </tr>
+                    
+                        <tr th:if="${paises == null || #lists.isEmpty(paises)}">
+                            <td colspan="8" style="text-align: center; color: var(--text-light); padding: 2rem;">
+                                No se encontraron países que coincidan con tu búsqueda.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>
