@@ -1,3 +1,13 @@
+package es.ugr.isiproject.findhome.service;
+
+import org.springframework.stereotype.Service;
+import java.util.*;
+
+import es.ugr.isiproject.findhome.model.Pais;
+import es.ugr.isiproject.findhome.model.PaisPuntuado;
+import es.ugr.isiproject.findhome.model.BusquedaCriterios;
+import es.ugr.isiproject.findhome.repository.PaisRepository;
+
 @Service
 public class RankingService {
 
@@ -18,14 +28,25 @@ public class RankingService {
             if (!criterios.getHabitantes().equalsIgnoreCase("Empty")) {
                 int M40 = 40000000;
                 int M5 = 5000000;
-                if (criterios.getHabitantes().equals("poca") && pais.getHabitantes() != null) {
-                  if(pais.getHabitantes() > M40) { puntuacion -= valorpuntuacion; }
-                  else if(pais.getHabitantes() > M5)  { puntuacion -= valorpuntuacion/5; }
+                int habitantes = 0;
+
+                if(pais.getHabitantes() != null){
+                    try {
+                        habitantes = Integer.parseInt(pais.getHabitantes());
+                    } catch (NumberFormatException e) {
+                        System.out.println("No se pudo parsear habitantes a int");
+                    }
+                }
+
+
+                if (criterios.getHabitantes().equals("poca")) {
+                  if(habitantes > M40) { puntuacion -= valorpuntuacion; }
+                  else if(habitantes > M5)  { puntuacion -= valorpuntuacion/5; }
                   else { puntuacion += valorpuntuacion/10; }
                 }
-                if (criterios.getHabitantes().equals("mucha") && pais.getHabitantes() != null) {
-                  if(pais.getHabitantes() < M5) { puntuacion -= valorpuntuacion; }
-                  else if(pais.getHabitantes() < M40)  { puntuacion -= valorpuntuacion/5; }
+                if (criterios.getHabitantes().equals("mucha")) {
+                  if(habitantes < M5) { puntuacion -= valorpuntuacion; }
+                  else if(habitantes < M40)  { puntuacion -= valorpuntuacion/5; }
                   else { puntuacion += valorpuntuacion/10; }
                 }
             }

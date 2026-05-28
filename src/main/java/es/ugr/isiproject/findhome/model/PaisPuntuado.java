@@ -1,3 +1,5 @@
+package es.ugr.isiproject.findhome.model;
+
 public class PaisPuntuado implements Comparable<PaisPuntuado> {
     private String iso3;
     private double puntuacion;

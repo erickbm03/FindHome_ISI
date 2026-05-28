@@ -28,12 +28,12 @@
             <h2>¿Qué buscas en tu próximo destino?</h2>
             <p class="subtitle">Responde a estas preguntas para ajustar el ranking a tus preferencias.</p>
             
-            <form class="questions-form">
+            <form class="questions-form" action="/ranking" method="post">
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="habitantes">Número de habitantes:</label>
                         <select id="habitantes" name="habitantes">
-                            <option value="">Cualquier tamaño</option>
+                            <option value="Empty">Cualquier tamaño</option>
                             <option value="poca">Menos de 5M (Pequeño)</option>
                             <option value="media">Entre 5M y 40M (Medio)</option>
                             <option value="mucha">Más de 40M (Grande)</option>
@@ -42,8 +42,8 @@
 
                     <div class="form-group">
                         <label for="coste-vida">Coste de vida medio:</label>
-                        <select id="coste-vida" name="coste-vida">
-                            <option value="">Cualquier presupuesto</option>
+                        <select id="coste-vida" name="costeVida">
+                            <option value="Empty">Cualquier presupuesto</option>
                             <option value="bajo">Económico</option>
                             <option value="medio">Moderado</option>
                             <option value="alto">Alto</option>
@@ -51,19 +51,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="transporte">Calidad del transporte (Reseñas):</label>
-                        <select id="transporte" name="transporte">
-                            <option value="">No importa</option>
-                            <option value="4">⭐⭐⭐⭐+ (Excelente)</option>
-                            <option value="3">⭐⭐⭐+ (Bueno)</option>
-                            <option value="2">⭐⭐+ (Aceptable)</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
                         <label for="calidad-vida">Calidad de vida (Reseñas):</label>
-                        <select id="calidad-vida" name="calidad-vida">
-                            <option value="">No importa</option>
+                        <select id="calidad-vida" name="calidadVida">
+                            <option value="Empty">No importa</option>
                             <option value="4">⭐⭐⭐⭐+ (Excelente)</option>
                             <option value="3">⭐⭐⭐+ (Buena)</option>
                             <option value="2">⭐⭐+ (Regular)</option>
@@ -72,8 +62,8 @@
 
                     <div class="form-group">
                         <label for="ingresos">Tasa media de ingresos:</label>
-                        <select id="ingresos" name="ingresos">
-                            <option value="">Cualquier nivel</option>
+                        <select id="ingresos" name="tasaIngresos">
+                            <option value="Empty">Cualquier nivel</option>
                             <option value="alto">Ingresos Altos</option>
                             <option value="medio">Ingresos Medios</option>
                             <option value="bajo">Ingresos Bajos</option>
@@ -82,8 +72,8 @@
 
                     <div class="form-group">
                         <label for="empleo">Tasa de empleo media:</label>
-                        <select id="empleo" name="empleo">
-                            <option value="">Cualquiera</option>
+                        <select id="empleo" name="tasaEmpleo">
+                            <option value="Empty">Cualquiera</option>
                             <option value="alta">Alta estabilidad (>95%)</option>
                             <option value="media">Estabilidad media (90% - 95%)</option>
                         </select>
@@ -104,7 +94,6 @@
                             <th>País</th>
                             <th>Habitantes</th>
                             <th>Coste de Vida</th>
-                            <th>Transporte</th>
                             <th>Calidad de Vida</th>
                             <th>Ingresos Medios</th>
                             <th>Tasa Empleo (%)</th>
@@ -129,11 +118,6 @@
                                                        (#strings.toLowerCase(pais.costeVida) == 'medio' ? 'badge badge-warning' : 'badge badge-success')}">
                                     Alto
                                 </span>
-                            </td>
-                            
-                            <td>
-                                <span th:if="${pais?.transporteEstrellas != null}" 
-                                      th:text="${#strings.repeat('⭐', pais.transporteEstrellas)}">⭐⭐⭐⭐⭐</span>
                             </td>
                             
                             <td>

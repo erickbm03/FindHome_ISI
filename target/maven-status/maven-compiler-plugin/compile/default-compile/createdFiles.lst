@@ -8,5 +8,8 @@ es/ugr/isiproject/findhome/datasource/api/WorldBankClient.class
 es/ugr/isiproject/findhome/datasource/api/NumbeoScraper$CountryData.class
 es/ugr/isiproject/findhome/model/Pais.class
 es/ugr/isiproject/findhome/controller/HomeController.class
+es/ugr/isiproject/findhome/model/BusquedaCriterios.class
+es/ugr/isiproject/findhome/model/PaisPuntuado.class
+es/ugr/isiproject/findhome/service/RankingService.class
 es/ugr/isiproject/findhome/repository/PaisRepository.class
 es/ugr/isiproject/findhome/service/PaisSyncService.class

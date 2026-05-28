@@ -1,3 +1,5 @@
+package es.ugr.isiproject.findhome.model;
+
 public class BusquedaCriterios {
 
   private String habitantes;      // 'cualquier', 'grande', etc.

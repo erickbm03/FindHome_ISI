@@ -28,7 +28,7 @@
             <h2>¿Qué buscas en tu próximo destino?</h2>
             <p class="subtitle">Responde a estas preguntas para ajustar el ranking a tus preferencias.</p>
             
-            <form class="questions-form">
+            <form class="questions-form" action="/ranking" method="post">
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="habitantes">Número de habitantes:</label>
@@ -42,7 +42,7 @@
 
                     <div class="form-group">
                         <label for="coste-vida">Coste de vida medio:</label>
-                        <select id="coste-vida" name="coste-vida">
+                        <select id="coste-vida" name="costeVida">
                             <option value="Empty">Cualquier presupuesto</option>
                             <option value="bajo">Económico</option>
                             <option value="medio">Moderado</option>
@@ -52,7 +52,7 @@
 
                     <div class="form-group">
                         <label for="calidad-vida">Calidad de vida (Reseñas):</label>
-                        <select id="calidad-vida" name="calidad-vida">
+                        <select id="calidad-vida" name="calidadVida">
                             <option value="Empty">No importa</option>
                             <option value="4">⭐⭐⭐⭐+ (Excelente)</option>
                             <option value="3">⭐⭐⭐+ (Buena)</option>
@@ -62,7 +62,7 @@
 
                     <div class="form-group">
                         <label for="ingresos">Tasa media de ingresos:</label>
-                        <select id="ingresos" name="ingresos">
+                        <select id="ingresos" name="tasaIngresos">
                             <option value="Empty">Cualquier nivel</option>
                             <option value="alto">Ingresos Altos</option>
                             <option value="medio">Ingresos Medios</option>
@@ -72,7 +72,7 @@
 
                     <div class="form-group">
                         <label for="empleo">Tasa de empleo media:</label>
-                        <select id="empleo" name="empleo">
+                        <select id="empleo" name="tasaEmpleo">
                             <option value="Empty">Cualquiera</option>
                             <option value="alta">Alta estabilidad (>95%)</option>
                             <option value="media">Estabilidad media (90% - 95%)</option>
@@ -94,7 +94,6 @@
                             <th>País</th>
                             <th>Habitantes</th>
                             <th>Coste de Vida</th>
-                            <th>Transporte</th>
                             <th>Calidad de Vida</th>
                             <th>Ingresos Medios</th>
                             <th>Tasa Empleo (%)</th>
@@ -119,11 +118,6 @@
                                                        (#strings.toLowerCase(pais.costeVida) == 'medio' ? 'badge badge-warning' : 'badge badge-success')}">
                                     Alto
                                 </span>
-                            </td>
-                            
-                            <td>
-                                <span th:if="${pais?.transporteEstrellas != null}" 
-                                      th:text="${#strings.repeat('⭐', pais.transporteEstrellas)}">⭐⭐⭐⭐⭐</span>
                             </td>
                             
                             <td>
